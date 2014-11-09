@@ -112,7 +112,7 @@
 		</dict>
 	</dict>
 	<key>Update Manifest URL</key>
-	<string>http://dl.dropbox.com/u/23990/Canisbos/Quickscript/Update.plist</string>
+	<string>https://raw.githubusercontent.com/canisbos/Quickscript/master/dist/Update.plist</string>
 	<key>Website</key>
 	<string>http://canisbos.com/</string>
 </dict>
