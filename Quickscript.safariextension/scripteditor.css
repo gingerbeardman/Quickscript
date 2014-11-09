@@ -1,0 +1,138 @@
+body {
+	margin: 0px;
+	padding-top: 8px;
+	overflow: hidden;
+	cursor: default;
+	font: 11px "Lucida Grande";
+}
+textarea {
+	padding: 4px;
+	overflow: scroll;
+	white-space: pre;
+	font: 12px Menlo;
+	line-height: 130%;
+}
+.box-label {
+	width: 80px;
+	border: 1px solid silver;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	border-bottom-width: 0;
+	padding: 2px 8px;
+	background-color: #ddd;
+	color: black;
+	text-align: center;
+	font: bold 12px Helvetica;
+}	#message-box .box-label {
+	color: red;
+}
+.box-level-one {
+	margin: 12px;
+}
+.box-level-two {
+	/*width: 650px;*/
+	border: 1px solid silver;
+	background-color: white;
+}
+.box-tab-strip > div {
+	display: inline-block;
+}
+.disabled {
+	color: #a0a0a0;
+}
+.edit-field {
+	width: 644px;
+	resize: none;
+	border: 1px solid white;
+	background-color: white;
+}
+.edit-field:focus {
+}
+.highlighted {
+	background-color: rgba(100,213,252,0.25);
+}
+.tab {
+	display: inline-block;
+	width: auto;
+	min-width: 80px;
+	background-color: white;
+	color: #444;
+}
+.tab.active {
+	background-color: #ddd;
+	color: black;
+}
+#checkbox-jquery {
+	margin-left: 12px;
+}
+#control-box {
+	position: absolute;
+	top: -4px;
+	right: 0px;
+	text-align: right;
+}
+#message-box {
+	display: none;
+}
+#message-control-div {
+	margin: 0 4px 4px;
+}
+#message-div {
+	margin: 4px;
+}
+#options {
+	position: relative;
+	top: -2px;
+	padding-left: 8px;
+}
+#pattern {
+	height: 22px;
+	padding: 0 4px;
+	font: 12px Menlo;
+}
+#patterns {
+	height: 30px;
+}
+#pattern-shortcuts {
+	position: absolute;
+	right: 12px;
+	top: 72px;
+}
+#script {
+	height: 490px;
+}
+#script-select {
+	display: none;
+	position: absolute;
+	z-index: 2;
+	margin-left: -1px;
+	width: 656px;
+	font: 13px Helvetica;
+	padding: 4px;
+}
+#script-select-box {
+	display: none;
+	position: absolute;
+}
+#script-select-toggle {
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	position: absolute;
+	left: 634px;
+	top: 41px;
+	background: url('down.png') no-repeat center;
+	opacity: 0.5;
+	cursor: pointer;
+}
+#script-select-toggle.hidden {
+	display: none;
+}
+#script-select-toggle.up {
+	background-image: url('up.png');
+}
+#title {
+	height: 22px;
+	padding: 0 4px;
+	font: 13px Helvetica;
+}

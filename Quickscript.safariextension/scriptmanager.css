@@ -1,0 +1,127 @@
+body {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	font: normal 12px Helvetica;
+	cursor: default;
+}
+pre {
+	display: block;
+}
+.chooser-item {
+	position: relative;
+	padding: 4px;
+	list-style-type: none;
+}
+.chooser-item:hover {
+	background-color: #d4dae1;
+}
+.chooser-item > .text {
+	display: inline-block;
+	width: 200px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.chooser-item > .button {
+	display: none;
+	position: absolute;
+	cursor: pointer;
+	top: 3px;
+}
+.chooser-item:hover > .button {
+	display: inline;
+}
+.chooser-item > .button.dupe {
+	right: 24px;
+}
+.chooser-item > .button.trash {
+	right: 4px;
+}
+.controls {
+	position: absolute;
+	top: 7px;
+	right: 7px;
+	cursor: pointer;
+}
+.controls > img {
+	margin-left: 4px;
+}
+.disabled {
+	color: #a0a0a0;
+}
+.jq-label {
+	margin-left: 16px;
+}
+.option-box {
+	margin-bottom: 8px;
+}
+.pattern-box {
+	margin-bottom: 12px;
+	font-family: Menlo, Consolas, monospace;
+	color: #194EC3;
+}
+.script-box {
+	font-family: Menlo, Consolas, monospace;
+	font-size: 11px;
+	line-height: 16px;
+}
+.script-item {
+	position: relative;
+	margin-bottom: 16px;
+	border: 1px solid silver;
+	border-radius: 7px;
+	padding: 12px 16px 8px;
+}
+.script-item .button.save {
+	display: none;
+}
+.script-title {
+	width: 90%;
+	margin-top: 0;
+	margin-bottom: 8px;
+	font-size: 18px;
+	font-weight: normal;
+}
+.type-label {
+	margin-right: 8px;
+}
+#bottom-padder {
+	visibility: hidden;
+}
+#chooser {
+	position: fixed;
+	width: 242px;
+	overflow-y: scroll;
+	border-left: 1px solid #dee3e9;
+	border-right: 1px solid gray;
+	padding: 6px 4px 30px;
+	background-color: #dee3e9;
+}
+#chooser-controls {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 243px;
+	height: 24px;
+	border-top: 1px solid gray;
+	padding-left: 8px;
+	background-color: #ced3db;
+	font-size: 24px;
+	line-height: 0;
+}
+#chooser-controls > span {
+	position: relative;
+	top: 10px;
+	cursor: pointer;
+}
+#chooser-list {
+	margin: 0;
+	padding: 0;
+}
+#scriptlist {
+	position: relative;
+	left: 252px;
+	padding: 16px;
+	overflow-y: scroll;
+}

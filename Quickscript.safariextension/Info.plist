@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>Canisbos Computing</string>
+	<key>Builder Version</key>
+	<string>10600.1.25</string>
+	<key>CFBundleDisplayName</key>
+	<string>Quickscript</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.canisbos.quickscript</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.1.9</string>
+	<key>CFBundleVersion</key>
+	<string>17</string>
+	<key>Chrome</key>
+	<dict>
+		<key>Global Page</key>
+		<string>global.html</string>
+		<key>Menus</key>
+		<array>
+			<dict>
+				<key>Identifier</key>
+				<string>myToolbarMenu</string>
+				<key>Menu Items</key>
+				<array>
+					<dict>
+						<key>Command</key>
+						<string>showScriptEditor</string>
+						<key>Identifier</key>
+						<string>mi_edit</string>
+						<key>Title</key>
+						<string>Create/Edit Script...</string>
+					</dict>
+					<dict>
+						<key>Command</key>
+						<string>showScriptManager</string>
+						<key>Identifier</key>
+						<string>mi_manage</string>
+						<key>Title</key>
+						<string>Manage Scripts…</string>
+					</dict>
+					<dict>
+						<key>Identifier</key>
+						<string>separator_0</string>
+						<key>Separator</key>
+						<true/>
+					</dict>
+				</array>
+			</dict>
+		</array>
+		<key>Popovers</key>
+		<array>
+			<dict>
+				<key>Filename</key>
+				<string>scripteditor.html</string>
+				<key>Height</key>
+				<real>688</real>
+				<key>Identifier</key>
+				<string>scriptEditor</string>
+				<key>Width</key>
+				<real>680</real>
+			</dict>
+		</array>
+		<key>Toolbar Items</key>
+		<array>
+			<dict>
+				<key>Command</key>
+				<string>handleButtonClick</string>
+				<key>Identifier</key>
+				<string>myToolbarItem</string>
+				<key>Image</key>
+				<string>script.png</string>
+				<key>Label</key>
+				<string>Quickscript</string>
+				<key>Menu</key>
+				<string>myToolbarMenu</string>
+				<key>Palette Label</key>
+				<string>Quickscript</string>
+				<key>Tool Tip</key>
+				<string>Quickscript</string>
+			</dict>
+		</array>
+	</dict>
+	<key>Content</key>
+	<dict>
+		<key>Scripts</key>
+		<dict>
+			<key>End</key>
+			<array>
+				<string>injected.js</string>
+			</array>
+		</dict>
+	</dict>
+	<key>Description</key>
+	<string>Save and run scripts for any web page.</string>
+	<key>DeveloperIdentifier</key>
+	<string>ZANVZTSER6</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Permissions</key>
+	<dict>
+		<key>Website Access</key>
+		<dict>
+			<key>Include Secure Pages</key>
+			<true/>
+			<key>Level</key>
+			<string>All</string>
+		</dict>
+	</dict>
+	<key>Update Manifest URL</key>
+	<string>http://dl.dropbox.com/u/23990/Canisbos/Quickscript/Update.plist</string>
+	<key>Website</key>
+	<string>http://canisbos.com/</string>
+</dict>
+</plist>

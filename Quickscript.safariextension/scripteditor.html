@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script type="text/javascript" charset="utf-8" src="jquery.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="scripteditor.js"></script>
+	<link rel='stylesheet' type='text/css' href='scripteditor.css'>
+</head>
+<body id="scripteditor" onload="initialize()">
+	<div id="control-box" class="box-level-one">
+		<button id="new-button" class="button-top" onclick="createNewScript()">New ⌘N</button>
+		<button id="save-button" class="button-top" onclick="saveScript()" disabled>Save ⌘S</button>
+		<button id="revert-button" class="button-top" onclick="revertScript()" disabled>Revert ⌘R</button>
+		<button id="delete-button" class="button-top" onclick="deleteScript()" disabled>Delete ⌘⌫</button>
+		<button id="manage-button" class="button-top" onclick="openScriptManager()">Manage Scripts ⌘M</button>
+		<button id="help-button" class="button-top" onclick="openHelp()">Help ⌘H</button>
+	</div>
+	<div id="title-box" class="box-level-one">
+		<div class="box-label">Title</div>
+		<div class="box-level-two" id="title-input-box">
+			<input type="text" id="title" class="edit-field"><span 
+				id="script-select-toggle" class="down" onmousedown="toggleScriptSelect()"></span><input 
+				type="hidden" id="scriptid"><br><select id="script-select" size="8"></select>
+		</div>
+	</div>
+	<div id="pattern-box" class="box-level-one">
+		<div class="box-tab-strip">
+			<div id="tab-patterns" class="box-label tab active">URL Patterns</div>
+			<div id="pattern-shortcuts">
+				<span>Reset patterns to:</span>&nbsp;
+				<button id="ps-page" class="ps-button" onclick="setPatternBoxContents('page')">Page</button>
+				<button id="ps-dir"  class="ps-button" onclick="setPatternBoxContents('dir')" >Directory</button>
+				<button id="ps-host" class="ps-button" onclick="setPatternBoxContents('host')">Host</button>
+				<button id="ps-all"  class="ps-button" onclick="setPatternBoxContents('all')" >Everywhere</button>
+			</div>
+		</div>
+		<div class="box-level-two" id="pattern-input-box">
+			<textarea type="text" id="patterns" class="edit-field"></textarea>
+		</div>
+	</div>
+	<div id="message-box" class="box-level-one">
+		<div class="box-label">Message</div>
+		<div class="box-level-two" id="message-box-inner">
+			<div id="message-div"></div>
+			<div id="message-control-div">
+				<button id="message-button-OK" class="button-message">OK</button>
+				<button id="message-button-Cancel" class="button-message">Cancel</button>
+			</div>
+		</div>
+	</div>
+	<div id="script-box" class="box-level-one">
+		<div class="box-tab-strip">
+			<div id="tab-script" class="box-label tab active">Script</div>
+			<div id="options">
+				<span>Type:</span>&nbsp;
+				<input id="radio-ondemand" type="radio" name="radio-type" class="radio-type" checked>
+				<label for="radio-ondemand">On demand</label>&nbsp;
+				<input id="radio-autorun" type="radio" name="radio-type" class="radio-type">
+				<label for="radio-autorun">Autorun</label>&nbsp;&nbsp;
+				<input id="jquery-checkbox" type="checkbox">
+				<label for="jquery-checkbox" id="jquery-label">Include jQuery 2.1.0</label>
+			</div>
+		</div>
+		<div class="box-level-two" id="script-area-box">
+			<textarea id="script" class="edit-field script"></textarea>
+		</div>
+	</div>
+</body>
+</html>
