@@ -7,12 +7,14 @@ function initializeSettings() {
 			app.activeBrowserWindow.activeTab.url = app.activeBrowserWindow.activeTab.url;
 	} else {
 		if (lastVersion < 6) {
-			for (var x in localStorage) {
+			var lsKeys = Object.keys(localStorage);
+			for (var key, i = 0; i < lsKeys.length; i++) {
+				key = lsKeys[i];
 				try {
-					var so = JSON.parse(localStorage[x]);
+					var so = JSON.parse(localStorage[key]);
 					if (so.id) {
 						so.autorun = true;
-						localStorage[x] = JSON.stringify(so);
+						localStorage.setItem(key, JSON.stringify(so));
 					}
 				} catch(e) {}
 			}
@@ -111,7 +113,9 @@ function getMatchingScripts(url) {
 		return [];
 	}
 	var matchingScripts = [];
-	for (var key in localStorage) {
+	var lsKeys = Object.keys(localStorage);
+	for (var key, i = 0; i < lsKeys.length; i++) {
+		key = lsKeys[i];
 		var scriptItem = JSON.parse(localStorage[key]);
 		scriptItem.patterns.forEach(addMatchingScript);
 	}
@@ -127,7 +131,9 @@ function addAutorunScript(so, reloadTabs) {
 	if (reloadTabs) { reloadMatchingTabs(so.patterns); }
 }
 function addScripts() {
-	for (var key in localStorage) {
+	var lsKeys = Object.keys(localStorage);
+	for (var key, i = 0; i < lsKeys.length; i++) {
+		key = lsKeys[i];
 		try {
 			var so = JSON.parse(localStorage[key]);
 			if (so.autorun) {
@@ -199,7 +205,8 @@ function rebuildScriptMenu() {
 	for (var so in onDemandScripts) {
 		if (onDemandScripts[so].patterns.some(isGlobalPattern)) {
 			globalScripts.push(onDemandScripts[so]);
-		} else if (onDemandScripts[so].patterns.some(matchesCurrentUrl)) {
+		}
+		else if (onDemandScripts[so].patterns.some(matchesCurrentUrl)) {
 			localScripts.push(onDemandScripts[so]);
 		}
 	}
@@ -291,7 +298,9 @@ function handleMessage(event) {
 	switch (event.name) {
 		case 'passScripts': {
 			var scriptObjects = [];
-			for (var key in localStorage) {
+			var lsKeys = Object.keys(localStorage);
+			for (var key, i = 0; i < lsKeys.length; i++) {
+				key = lsKeys[i];
 				scriptObjects.push(JSON.parse(localStorage[key]));
 			}
 			event.target.page.dispatchMessage('receiveScripts', scriptObjects);
