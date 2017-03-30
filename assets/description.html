@@ -1,0 +1,145 @@
+<style>
+	h1,h3,h4,h5,h6 {
+		font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; 
+	}
+	h1 {
+		font-size: 1.5em;
+	}
+	h3 {
+		font-size: 1.4em;
+	}
+	h4 {
+		margin-top: 1.5em; margin-bottom: 0.5em;
+		font-size: 1.2em; font-weight: bold;
+	}
+	h5 {
+		margin-top: 1.5em; margin-bottom: 0.5em;
+		font-size: 1.05em; font-weight: bold;
+	}
+	h6 {
+		margin-top: 1.5em; margin-bottom: 0.5em;
+		font-size: 1em; font-weight: bold;
+	}
+	p.footnote {
+		font-size: 14px;
+		margin: 0.75em;
+		text-indent: -0.75em;
+	}
+	span.superscript {
+		font-size: 110%;
+		position: relative;
+		top: -2px;
+	}
+	p.footnote > span.superscript {
+		font-size: 120%;
+		padding-right: 1px;
+	}
+	blockquote em {
+		font-style: italic;
+	}
+</style>
+
+<p class="downlink"><a href="https://github.com/canisbos/Quickscript/raw/master/dist/Quickscript.safariextz">Download Quickscript</a></p>
+<p>
+	<em>Requires Safari 5.1 or higher.</em></p>
+<p>
+	Quickscript is an extension that lets you save and run arbitrary bits of JavaScript code on selected web pages in Safari. The most important word in the foregoing sentence is "save", because if you want to run a bit of JavaScript on a web page just once, you can always use Safari's built-in error console to do that. Scripts saved in Quickscript can run either on demand, when you select them in a menu; or automatically, whenever you visit a page that matches a URL pattern that's saved with the script.</p>
+<p>
+	I wrote Quickscript solely for my own use, so I could have a way to run little scripts of my own devising that don't deserve their own extension. Admittedly, it's not very polished (not that any of my extensions are!) or even fully baked. It is, however, at least minimally functional.</p>
+<p>
+	(In case you're wondering whether Quickscript supports scripts written for <a href="https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/" target="_blank">Greasemonkey</a>, it doesn't. Quickscript is a lot simpler and less ambitious than Greasemonkey, and it makes no effort to be compatible with that Firefox extension.)</p>
+
+<h4 id="howtouse">
+	How to use Quickscript</h4>
+<p>
+	After installation, you'll see a new button in your Safari toolbar. Clicking it will bring up the Quickscript menu, pictured below.</p>
+<div class="screenshot">
+	<img src="http://dl.dropbox.com/u/23990/Canisbos/Quickscript/screenshot-menu.png" width="291" height="187">
+	<br><span class="caption">The Quickscript Menu</span></div>
+<p>
+	The menu will display, below the separator, any on-demand scripts you've saved. The commands above the separator open Quickscript's <em>Script Editor</em> and <em>Script Manager</em>, respectively. (More on these below.)</p>
+<h5>
+	Creating a script</h5>
+<p>
+	To create a new script, choose <strong>Create/Edit Script...</strong> in the Quickscript menu. This will open the Script Editor, pictured below.</p>
+<div class="screenshot">
+	<img src="http://dl.dropbox.com/u/23990/Canisbos/Quickscript/screenshot-editor-506px.png" width="506" height="363">
+	<br><span class="caption">The Script Editor</span></div>
+<p>
+	If you've already saved a script specifically for the site in the active tab, it will automatically appear in the Script Editor. If you've saved more than one such script, you'll be able to choose another one by clicking the chevron at the right end of the <strong>Title</strong> box. If you haven't yet saved any script for the current site, the Script Editor's fields will be populated with placeholder values.</p>
+<p>
+	To create a Quickscript script, you need to supply four pieces of information:</p>
+<ul>	
+	<li>a <em>title</em> for the script,</li>
+	<li>at least one <a href="#urlpatterns"><em>URL pattern</em></a> to determine which web pages the script will run on,</li>
+	<li>whether the script should run <a href="#scripttype"><em>on demand</em> or <em>automatically</em></a>, and</li>
+	<li>the <a href="#scriptsource">script itself</a></li>
+</ul>
+<p>
+<h6 id="urlpatterns">
+	URL patterns</h6>
+<p>
+	For on-demand scripts, URL patterns determine whether a script will appear in the Quickscript menu when a given site or page is in the active browser tab. (If the page's URL matches one of a script's URL patterns, that script will appear in the menu while the page is in the active tab.) For autorun scripts, URL patterns determine whether a script will run automatically as soon as a page is loaded.</p>
+<p>
+	Quickscript supports the URL pattern format that is used internally by Safari extensions. The following documentation is copied verbatim from Apple's Safari Extensions Development Guide:</p>
+<blockquote style="border: 1px solid #5088c5; margin: 1em 0; padding: 0 15px; font-size: 95%">
+	<p>A URL pattern takes the form <em>Scheme://Domain/Path</em>.</p>
+	<ul class="simple">
+		<li><em>Scheme</em> can be <code>http</code> or <code>https</code>.</li>
+		<li><em>Domain</em> is the host domain, such as <code>developer.apple.com</code> or <code>www.example.co.jp</code>.</li>
+		<li><em>Path</em> is the directory or webpage, such as <code>safari/</code> or <code>safari/library/navigation/index.html</code>.</li>
+	</ul>
+	<p>A URL pattern can include the <code style="font-size:1em">*</code> character to match any string. This allows you to specify all pages in a particular domain, for example, without having to create an exhaustive list.</p>
+	<p>The <code style="font-size:1em">*</code> character can be used anywhere in the domain or path, but not the scheme.</p>
+	<div class="notebox">
+		<p><strong>Examples:</strong></p>
+		<ul>
+			<li><code>http://*/*</code> — matches all http URLs</li>
+			<li><code>http://*.apple.com/*</code> — matches all webpages from apple.com</li>
+			<li><code>http://developer.apple.com/*</code> — matches all webpages from developer.apple.com</li>
+			<li><code>https://secure.example.com/accounts/*</code> — matches all webpages from the accounts directory of secure.example.com that are delivered over HTTPS.</li>
+			<li><code>http://www.example.com/thepath/thepage.html</code> — matches one webpage</li>
+		</ul>
+	</div>
+</blockquote>
+<div class="highlightbox">
+	<h5>Note</h5>
+	<p>
+		There is a bug in Safari's URL pattern parser such that a pattern that includes a <code style="font-size:1em">*</code> character anywhere in a domain name except for the first part of the domain name results in the pattern matching every page everywhere. For example, due to this bug, the patterns <code>http://www.example.*/*</code> and <code>http://www.*.com/*</code> are both equivalent to <code>http://*/*</code>, but the pattern <code>http://*.example.com/*</code> works correctly. To avoid this bug, please avoid constructing patterns that include a <code style="font-size:1em">*</code> in any part of the domain name except the first part.</p>
+</div>
+<p>
+	You can enter several patterns in the <strong>URL Patterns</strong> box. Each pattern must be on its own line.</p>
+<p>
+	You can use the buttons above the URL Patterns box to quickly enter http and https patterns based on the active tab's URL. The <strong>Page</strong> button will enter patterns that match just the current page (and similar pages that share the same path but have different parameters in the query portion of the URL). <strong>Directory</strong> will match any URL that is the same as the current URL up to the last slash. <strong>Host</strong> will match any URL whose host (the part of the URL between the double slash and the first single slash) is the same as the current URL. Finally, <strong>Everywhere</strong> will match any http or https URL anywhere.</p>
+<h6 id="scripttype">
+	On-demand vs. autorun scripts</h6>
+<p>
+	An on-demand script appears in the Quickscript menu whenever you are viewing a web page whose URL matches one of the script's URL patterns. It does not run unless you select it in the menu. In contrast, an autorun script runs automatically as soon as you visit a page whose URL matches one of the script's URL patterns. Autorun scripts do not appear in the Quickscript menu. You can change an on-demand script into an autorun script, or vice versa, by selecting the appropriate <strong>Type</strong> option and saving the script.</p>
+<h6 id="scriptsource">
+	The script itself</h6>
+<p>
+	Type or paste the script itself into the <strong>Script</strong> box. You can enter either straight JavaScript or a <code>javascript:</code> bookmarklet; Quickscript is smart enough to handle each appropriately. Among the example scripts included in Quickscript, "Add to Instapaper" is a bookmarklet, while "Reverse All Text" is straight JavaScript.</p>
+<h6>
+	Including jQuery</h6>
+<p>
+	If you enable the "Include jQuery" option, Quickscript will load jQuery into the web page before it loads your script. That means you'll be able to use jQuery in your script. The version of jQuery that will be loaded is indicated by the version number on the checkbox label.</p>
+<h5>
+	The Script Manager</h5>
+<p>
+	To see all your saved scripts in one place, select <strong>Manage Scripts...</strong> in the Quickscript menu or click the <strong>Manage Scripts</strong> button in the Script Editor.</p>
+<div class="screenshot">
+	<img src="http://dl.dropbox.com/u/23990/Canisbos/Quickscript/screenshot-manager-506px.png" width="506" height="337">
+	<br><span class="caption">The Script Manager</span></div>
+<p>
+	Here, you can create new scripts and edit or delete existing ones. To create a new script, click the <strong>+</strong> sign at the bottom of the left panel. To save a script after editing it, click the floppy disk icon at the top right corner of its editing area or type ⌘S while a text field is in focus. To delete a script, click either the trash can icon next to the script title on the left panel or the same icon at the top right corner of the script's editing area.</p>
+<p>
+	Note: When you save an autorun script, any tabs that contain pages that match the script's URL patterns will reload automatically.</p>
+
+<h4>
+	Warning!</h4>
+<p>
+	If you use the Safari command "Remove All Website Data", either from the Privacy tab of Safari preferences or from the Reset Safari dialog box, <em>your Quickscript data&mdash;including all scripts and their associated URL patterns&mdash;will be deleted</em>. If you want to retain your Quickscript data, before using the aforementioned command, make sure to back up the file <code>safari-extension_com.canisbos.quickscript-zanvztser6_0.localstorage</code> located in the folder <code>~/Library/Safari/LocalStorage</code>. After removing all website data, copy the file back to the folder and restart Safari.</p>
+
+<p class="downlink"><a href="https://github.com/canisbos/Quickscript/raw/master/dist/Quickscript.safariextz">Download Quickscript</a></p>
+
+<p style="text-align: center;"><span style="font-size: 11px;">2014 Canisbos Computing</span><br /><a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/"><img style="border-width: 0;" src="http://creativecommons.org/images/public/somerights20.png" alt="Creative Commons License" /></a></p>
