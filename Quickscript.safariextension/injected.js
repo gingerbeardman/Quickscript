@@ -2,10 +2,13 @@ function handleMessage(e) {
   switch (e.name) {
     case 'execScript': {
       if (e.message.useJQuery) {
-        var jqs = document.createElement('script');
-        jqs.type = 'text/javascript';
-        jqs.src = safari.extension.baseURI + 'jquery-3.1.1.min.js';
-        document.querySelector('head').appendChild(jqs);
+        if (!document.getElementById('quickscript-jquery')) {
+          var jqs = document.createElement('script');
+          jqs.type = 'text/javascript';
+          jqs.id = 'quickscript-jquery';
+          jqs.src = safari.extension.baseURI + 'jquery-3.1.1.min.js';
+          document.body.appendChild(jqs);
+        }
       }
       var script = e.message.script;
       setTimeout(function () {
@@ -14,8 +17,9 @@ function handleMessage(e) {
         } else {
           var s = document.createElement('script');
           s.type = 'text/javascript';
+          s.id = 'quickscript-' + Math.random().toString().slice(9);
           s.textContent = script;
-          document.querySelector('head').appendChild(s);
+          document.body.appendChild(s);
         }
       }, 100);
       break;

@@ -197,7 +197,7 @@ function addEventListeners() {
       else if (e.which == 9 && !e.shiftKey && !e.ctrlKey && !e.altKey && !e.metaKey) {
         if ($(this).hasClass('script-box')) {
           e.preventDefault();
-          insertAtCaret('    ');
+          insertAtCaret('  ');
         }
       }
     },
